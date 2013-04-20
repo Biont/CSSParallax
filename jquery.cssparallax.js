@@ -30,21 +30,24 @@
       interval       : 33,    // Accepts standard jQuery effects speeds (i.e. fast, normal or milliseconds)
       speedX         : 400,   
       speedY         : 100,    
-      falloff        :  0.4  ,
-      focus          :  0.9  ,
+      falloff        :  0.4 ,
+      focus          :  0.9 ,
       // dof            :  null  ,       //Disabled....who needs webkit-only features?
-      resize         :  false  ,
+      resize         :  false,
     }, options);
 
     return this.each(function(){
 	var $this = $(this),
+		that = $this[0],
 		layers = $this.find('ul li'),
 		numlayers = layers.length,
 		layerids = [],
 		timer,
-		pos = [],
+		pos = [,],
 		offset,
-		div  = [$this[0].offsetWidth,$this[0].offsetHeight];
+		div  = [that.offsetWidth,that.offsetHeight]
+		mouse  = [,];
+
 
 	
 	// Fetch all ids from layers and apply (optional) DoF
@@ -63,20 +66,17 @@
 	// Mouseenter and Mouseleave functions wrapped in jQuery's hover
 	$this.hover(
 	  function () {
-	  
 			timer = setInterval(function(){
-			offset = [$this[0].style['left'],$this[0].style['top']];
+			offset = [that.style['left'],that.style['top']];
 			//If resize is active, update dimensions (There might be a better way to do this)		
 			if(settings.resize){
-				div = [$this[0].offsetWidth,$this[0].offsetHeight];
+				div = [that.offsetWidth,that.offsetHeight];
 			}
-			
-			//Get mouse position once (saves an event handler, but I'm not sure if this is the best way to do this)
-			//Calculate new position and tranlate the layers
-		   $(document).one("mousemove", function (e) {	   
-				pos = [(((e.pageX - offset[0])/div[0])-0.5)*settings.speedX,(((e.pageY - offset[1])/div[1])-0.5)*settings.speedY];
-				translate(pos);
-			});
+
+			//Calculate new position and translate the layers
+			pos = [(((mouse[0] - offset[0])/div[0])-0.5)*settings.speedX,(((mouse[1] - offset[1])/div[1])-0.5)*settings.speedY];
+			translate(pos);
+
 
 			},settings.interval);
 	  },
@@ -95,9 +95,11 @@
 				   layers[index].style.webkitTransform=
 				   layers[index].style.MozTransform=
 				   layers[index].style.transform = attr;
-		};	
+			};	
 	}
-	
+	$(document).mousemove(function(e){
+      mouse = [e.pageX,e.pageY];
+    }); 
 	
     });
   };
