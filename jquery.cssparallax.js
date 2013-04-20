@@ -27,7 +27,7 @@
   $.fn.parallax = function( options ) {
 
     var settings = $.extend( {
-      interval       : 200,    // Accepts standard jQuery effects speeds (i.e. fast, normal or milliseconds)
+      interval       : 33,    // Accepts standard jQuery effects speeds (i.e. fast, normal or milliseconds)
       speedX         : 400,   
       speedY         : 100,    
       falloff        :  0.4  ,
