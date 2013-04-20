@@ -1,0 +1,165 @@
+<!DOCTYPE html><html>
+<head>
+<meta name="description" content="CSSParallax - a lightweight jQuery plugin for parallax scrolling">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="../jquery.cssparallax.js"></script>
+<style>
+
+/*Parallax-plugin*/
+
+#parallax{
+position:relative;
+height:680px;
+width:100%;
+overflow:hidden;
+
+background: #207cca;
+background: -moz-linear-gradient(top,  #207cca 8%, #7db9e8 35%, #b5d0e5 50%, #6de552 51%, #31af0e 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(8%,#207cca), color-stop(35%,#7db9e8), color-stop(50%,#b5d0e5), color-stop(51%,#6de552), color-stop(100%,#31af0e));
+background: -webkit-linear-gradient(top,  #207cca 8%,#7db9e8 35%,#b5d0e5 50%,#6de552 51%,#31af0e 100%);
+background: -o-linear-gradient(top,  #207cca 8%,#7db9e8 35%,#b5d0e5 50%,#6de552 51%,#31af0e 100%);
+background: -ms-linear-gradient(top,  #207cca 8%,#7db9e8 35%,#b5d0e5 50%,#6de552 51%,#31af0e 100%);
+background: linear-gradient(to bottom,  #207cca 8%,#7db9e8 35%,#b5d0e5 50%,#6de552 51%,#31af0e 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#207cca', endColorstr='#31af0e',GradientType=0 );
+
+
+}
+
+#parallax ul li{
+display:block;
+position:absolute;
+left: 50%;
+/*  -webkit-transition: all 0.8s ease-out;
+-moz-transition: all 0.8s ease-out;
+transition: all 0.8s ease-out;  */
+-webkit-backface-visibility: hidden;
+}
+
+#parallax ul li>div{
+margin-left: -50%;
+
+}
+
+#parallax1{
+top:9%;
+
+}
+
+#parallax1>div{
+background-image: url(img/mountains.png);
+background-repeat:repeat-x;
+height:500px;
+width:1900px;
+}
+
+
+
+#parallax2{
+bottom:15%;
+}
+
+#parallax2>div{
+background-image: url(img/grass-medium.png);
+background-repeat:repeat-x;
+height:190px;
+width:1900px;
+}
+
+#parallax3{
+bottom:9%;
+}
+
+#parallax3>div{
+background-image: url(img/grass-medium.png);
+background-repeat:repeat-x;
+height:190px;
+width:1900px;
+}
+
+#parallax3>div img{
+position:absolute;
+bottom:120px;
+left:5%;
+z-index:1;
+}
+
+#parallax4{
+bottom:4%;
+}
+
+#parallax4>div{
+background-image: url(img/grass-big.png);
+background-repeat:repeat-x;
+height:190px;
+width:1900px;
+
+}
+
+#parallax4>div img{
+position:absolute;
+bottom:120px;
+left:-30%;
+z-index:1;
+}
+
+#parallax5{
+bottom:-9%;
+}
+
+#parallax5>div{
+background-image: url(img/grass-big.png);
+background-repeat:repeat-x;
+height:190px;
+width:1900px;
+}
+
+
+#parallax6{
+bottom:-22%;
+}
+
+#parallax6>div{
+background-image: url(img/grass-big.png);
+background-repeat:repeat-x;
+height:190px;
+width:2000px;
+}
+
+</style>
+
+</head>
+<body>
+
+
+    <div id="parallax">
+	    <ul>
+		    <li id="parallax1"><div></div></li>
+		    <li id="parallax2"><div></div></li>
+		    <li id="parallax3"><div></div></li>
+		    <li id="parallax4"><div></div></li>
+		    <li id="parallax5"><div></div></li>
+		    <li id="parallax6"><div></div></li>
+		    <li id="parallax7"><div></div></li>
+	    </ul>
+    </div>
+
+
+
+
+<script type="text/javascript">
+
+   $('#parallax').parallax({
+    interval:33,    //  <----30fps  How often to update the position
+    speedX:400,     // How far to travel horizontally
+    speedY:85,     // How far to travel vertically
+    focus:0.5,      // focal point
+    resize:true     // Set to false to save some calculations if your container does not change size
+    });
+
+</script>
+
+
+</body>
+</html>

@@ -18,13 +18,13 @@ Your HTML should look like this:
 ```
     <div id="parallax">
 	    <ul>
-		    <li id="parallax1"></li>
-		    <li id="parallax2"></li>
-		    <li id="parallax3"></li>
-		    <li id="parallax4"></li>
-		    <li id="parallax5"></li>
-		    <li id="parallax6"></li>
-		    <li id="parallax7"></li>
+		    <li id="parallax1"><div></div></li>
+		    <li id="parallax2"><div></div><</li>
+		    <li id="parallax3"><div></div><</li>
+		    <li id="parallax4"><div></div><</li>
+		    <li id="parallax5"><div></div><</li>
+		    <li id="parallax6"><div></div><</li>
+		    <li id="parallax7"><div></div><</li>
 	    </ul>
     </div>
 ```
