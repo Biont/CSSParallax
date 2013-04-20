@@ -33,15 +33,26 @@ Your HTML should look like this:
 Call the plugin like this:
 
 ```javascript
-<script type="text/javascript">
+
+
+	$('#parallax').parallax();
+	
+
+```
+
+Options:
+
+```javascript
 
 	$('#parallax').parallax({
-	interval:33, //<----30fps
-	speedX:400,
-	speedY:100,
-	focus:0.5,
-	resize:true
+	interval:33,    //  <----30fps  How often to update the position
+	speedX:300,	    // How far to travel horizontally
+	speedY:100,     // How far to travel vertically
+	focus:0.5,      // focal point
+	resize:true     // Set to false to save some calculations if your container does not change size
 	});
 	
-</script>
+
 ```
+
+
