@@ -15,7 +15,7 @@ I spent some time optimizing this for size and performance, so it should run pre
 
 Your HTML should look like this:
 
-
+(Sorry, this is my first git  and I sort of jumped right into the water, so give me some time to figure out how to display markup here))
 <div id="parallax">
 	<ul>
 		<li id="parallax1"></li>
@@ -32,7 +32,7 @@ Your HTML should look like this:
 
 Call the plugin like this:
 
-
+```javascript
 <script type="text/javascript">
 
 	$('#parallax').parallax({
@@ -44,3 +44,4 @@ Call the plugin like this:
 	});
 	
 </script>
+```
