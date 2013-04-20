@@ -15,19 +15,19 @@ I spent some time optimizing this for size and performance, so it should run pre
 
 Your HTML should look like this:
 
-(Sorry, this is my first git  and I sort of jumped right into the water, so give me some time to figure out how to display markup here))
-<div id="parallax">
-	<ul>
-		<li id="parallax1"></li>
-		<li id="parallax2"></li>
-		<li id="parallax3"></li>
-		<li id="parallax4"></li>
-		<li id="parallax5"></li>
-		<li id="parallax6"></li>
-		<li id="parallax7"></li>
-	</ul>
-</div>
-
+```
+    <div id="parallax">
+	    <ul>
+		    <li id="parallax1"></li>
+		    <li id="parallax2"></li>
+		    <li id="parallax3"></li>
+		    <li id="parallax4"></li>
+		    <li id="parallax5"></li>
+		    <li id="parallax6"></li>
+		    <li id="parallax7"></li>
+	    </ul>
+    </div>
+```
 # Javascript
 
 Call the plugin like this:
