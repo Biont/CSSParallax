@@ -42,14 +42,9 @@
 		numlayers = layers.length,
 		layerids = [],
 		timer,
-		xpos,
-		ypos,
+		pos = [],
 		offset,
-		width,
-		height;
-
-	width = $this[0].offsetWidth;
-	height = $this[0].offsetHeight
+		div  = [$this[0].offsetWidth,$this[0].offsetHeight];
 
 	
 	// Fetch all ids from layers and apply (optional) DoF
@@ -63,43 +58,41 @@
 		}
 	
 	}
-		// Mouseenter and Mouseleave functions wrapped in jQuery's hover
-		$this.hover(
-		  function () {
-		  
-				timer = setInterval(function(){
-				offset = [$this[0].style['left'],$this[0].style['top']];
-				//If resize is active, update dimensions (There might be a better way to do this)		
-				if(settings.resize){
-					width = $this[0].offsetWidth;
-					height = $this[0].offsetHeight
-				}
-				
-				//Get mouse position once (saves an event handler, but I'm not sure if this is the best way to do this)
-				//Calculate new position and tranlate the layers
-			   $(document).one("mousemove", function (e) {	   
-					xpos = (((e.pageX - offset[0])/width)-0.5)*settings.speedX;
-					ypos = (((e.pageY - offset[1])/height)-0.5)*settings.speedY; 
-					translate(xpos,ypos);
-				});
+	// Mouseenter and Mouseleave functions wrapped in jQuery's hover
+	$this.hover(
+	  function () {
+	  
+			timer = setInterval(function(){
+			offset = [$this[0].style['left'],$this[0].style['top']];
+			//If resize is active, update dimensions (There might be a better way to do this)		
+			if(settings.resize){
+				div = [$this[0].offsetWidth,$this[0].offsetHeight];
+			}
+			
+			//Get mouse position once (saves an event handler, but I'm not sure if this is the best way to do this)
+			//Calculate new position and tranlate the layers
+		   $(document).one("mousemove", function (e) {	   
+				pos = [(((e.pageX - offset[0])/div[0])-0.5)*settings.speedX,(((e.pageY - offset[1])/div[1])-0.5)*settings.speedY];
+				translate(pos);
+			});
 
-				},settings.interval);
-		  },
-		  function () {
-		  //When mouse leaves, stop updating
-			clearInterval(timer);
-		  }
-		);
+			},settings.interval);
+	  },
+	  function () {
+	  //When mouse leaves, stop updating
+		clearInterval(timer);
+	  }
+	);
 				
-	function translate (newx,newy){
+	function translate (pos){
 			for (var index=0;index<numlayers; index++) {  
-				   var attr = 'translate3d(',
-					   x = -newx*(-settings.focus+(index+1)*settings.falloff),
-					   y = -newy*((index+1)*settings.falloff);
+				   var x = -pos[0]*(-settings.focus+(index+1)*settings.falloff),
+					   y = -pos[1]*((index+1)*settings.falloff)
+					   attr = 'translate3d(' + x + 'px,' + y + 'px,0)';
 
-				   layers[index].style.webkitTransform = attr + x + 'px,' + y + 'px,0)';
-				   layers[index].style.MozTransform = attr + x + 'px,' + y + 'px,0)';
-				   layers[index].style.transform = attr + x + 'px,' + y + 'px,0)';
+				   layers[index].style.webkitTransform = attr;
+				   layers[index].style.MozTransform = attr;
+				   layers[index].style.transform = attr;
 		};	
 	}
 	
