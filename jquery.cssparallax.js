@@ -37,8 +37,7 @@
     }, options);
 
     return this.each(function(){
-	var $that = document.getElementById(this.id),
-		$this = $(this),
+	var $this = $(this),
 		layers = $this.find('ul li'),
 		numlayers = layers.length,
 		layerids = [],
@@ -49,8 +48,8 @@
 		width,
 		height;
 
-	width = $that.offsetWidth;
-	height = $that.offsetHeight
+	width = $this[0].offsetWidth;
+	height = $this[0].offsetHeight
 
 	
 	// Fetch all ids from layers and apply (optional) DoF
@@ -68,12 +67,12 @@
 		$this.hover(
 		  function () {
 		  
-			timer = setInterval(function(){
-				offset = [$that.style['left'],$that.style['top']];
+				timer = setInterval(function(){
+				offset = [$this[0].style['left'],$this[0].style['top']];
 				//If resize is active, update dimensions (There might be a better way to do this)		
 				if(settings.resize){
-					width = $that.offsetWidth;
-					height = $that.offsetHeight
+					width = $this[0].offsetWidth;
+					height = $this[0].offsetHeight
 				}
 				
 				//Get mouse position once (saves an event handler, but I'm not sure if this is the best way to do this)
@@ -94,13 +93,13 @@
 				
 	function translate (newx,newy){
 			for (var index=0;index<numlayers; index++) {  
-				   var attrprefix = 'translate3d(',
+				   var attr = 'translate3d(',
 					   x = -newx*(-settings.focus+(index+1)*settings.falloff),
 					   y = -newy*((index+1)*settings.falloff);
 
-				   layers[index].style.webkitTransform = attrprefix + x + 'px,' + y + 'px,0)';
-				   layers[index].style.MozTransform = attrprefix + x + 'px,' + y + 'px,0)';
-				   layers[index].style.transform = attrprefix + x + 'px,' + y + 'px,0)';
+				   layers[index].style.webkitTransform = attr + x + 'px,' + y + 'px,0)';
+				   layers[index].style.MozTransform = attr + x + 'px,' + y + 'px,0)';
+				   layers[index].style.transform = attr + x + 'px,' + y + 'px,0)';
 		};	
 	}
 	
