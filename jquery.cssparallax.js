@@ -1,4 +1,4 @@
-/* CSSparallax | (c)2013 - Moritz Meiﬂelbach | MIT License */
+/* CSSparallax | (c)2013 - Moritz Meisselbach | MIT License */
 ;(function( $ ){
 	// It might be useful to do this in the future. Disabled for now
 	
