@@ -32,7 +32,7 @@
       speedY         : 100,    
       falloff        :  0.4  ,
       focus          :  0.9  ,
-      dof            :  null  ,
+      // dof            :  null  ,       //Disabled....who needs webkit-only features?
       resize         :  false  ,
     }, options);
 
@@ -52,10 +52,12 @@
 	
 		layerids[index] = layers[index].id;
 	
-		if (settings.dof!=null){
-			var blur = 'blur(' + Math.abs(-settings.dof+index*1)*1.2 + 'px)';
-			layers[index].setAttribute("style", '-webkit-filter:'+ blur);
-		}
+		//Uncomment the following (and the setting above) if you want depth of field
+	
+		// if (settings.dof!=null){
+			// var blur = 'blur(' + Math.abs(-settings.dof+index*1)*1.2 + 'px)';
+			// layers[index].setAttribute("style", '-webkit-filter:'+ blur);
+		// }
 	
 	}
 	// Mouseenter and Mouseleave functions wrapped in jQuery's hover
@@ -87,11 +89,11 @@
 	function translate (pos){
 			for (var index=0;index<numlayers; index++) {  
 				   var x = -pos[0]*(-settings.focus+(index+1)*settings.falloff),
-					   y = -pos[1]*((index+1)*settings.falloff)
+					   y = -pos[1]*((index+1)*settings.falloff),
 					   attr = 'translate3d(' + x + 'px,' + y + 'px,0)';
 
-				   layers[index].style.webkitTransform = attr;
-				   layers[index].style.MozTransform = attr;
+				   layers[index].style.webkitTransform=
+				   layers[index].style.MozTransform=
 				   layers[index].style.transform = attr;
 		};	
 	}
